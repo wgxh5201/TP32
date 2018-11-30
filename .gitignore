@@ -1,0 +1,5 @@
+.idea
+.DS_Store
+.htaccess
+Application/Runtime
+.vscode

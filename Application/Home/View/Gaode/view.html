@@ -1,0 +1,213 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <!--下载到本地-->
+    <script src="__PUBLIC__/jquery-3.3.1.min.js"></script>
+    <script src="__PUBLIC__/bootstrap-4.0.0-dist/css/bootstrap.min.css"></script>
+    <script src="__PUBLIC__/bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
+    <!--在线导入-->
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
+    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>-->
+    <title>鼠标拾取地图坐标</title>
+    <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css"/>
+    <script type="text/javascript" src="https://cache.amap.com/lbs/static/addToolbar.js"></script>
+</head>
+<!-- 画点弹窗 -->
+<div style="margin:auto; width: 1200px;background-color: white;">
+    <div data-options="region:'north' ,title:'',iconCls:'icon-tip'" style="height:34px;width: 600px">
+        <input type="hidden" id="upAutoId" value="">
+        <div id="r-result" style="width: 600px;">
+            搜索地址:<input type="text" id="place" size="20" value="" placeholder="请输需要查询的地址"
+                        style="width:60%;"/>
+            <a href="javascript:void(0)" onclick="lacationOk();" class="easyui-linkbutton" iconCls="icon-search"
+               plain="true">搜索</a>
+        </div>
+    </div>
+    <div id="coordinate" style="width: 600px;">
+        <span>经纬度：</span>
+        <input style="width: 300px;" type="text" readonly="true" id="lnglat">
+    </div>
+    <div id="container" class="map" style="margin-top: 10px">
+        <div data-options="region:'center',title:'',iconCls:'icon-tip',border:false">
+            <div id="searchResultPanel"
+                 style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
+        </div>
+    </div>
+</div>
+</html>
+<style type="text/css">
+    .map {
+        height: 100%;
+        width: 100%;
+    }
+</style>
+
+<script src="https://webapi.amap.com/maps?v=1.4.10&key=8325164e247e15eea68b59e89200988b&plugin=AMap.Geocoder,AMap.Autocomplete,AMap.Geolocation"></script>
+
+<script>
+    var marker;
+    var point;
+    var oldPoint;
+    var ac;//建立一个自动完成的对象
+    var myValue;
+    var MGeocoder;
+    var place;
+    var auto;
+    var map = new AMap.Map("container", {
+        resizeEnable: true
+    });
+
+    $(function () {
+        console.log('load start');
+        //GeoLocation需要HTTPS安全协议支持
+        //页面加载后自动识别定位
+        map.plugin('AMap.Geolocation', function () {
+            var geolocation = new AMap.Geolocation({
+                // 是否使用高精度定位，默认：true
+                enableHighAccuracy: true,
+                // 设置定位超时时间，默认：无穷大
+                timeout: 10000,
+                // 定位按钮的停靠位置的偏移量，默认：Pixel(10, 20)
+                buttonOffset: new AMap.Pixel(10, 20),
+                //  定位成功后调整地图视野范围使定位位置及精度范围视野内可见，默认：false
+                zoomToAccuracy: true,
+                //  定位按钮的排放位置,  RB表示右下
+                buttonPosition: 'RB'
+            });
+
+            console.log(geolocation);
+            map.addControl(geolocation);
+            geolocation.getCurrentPosition();
+            AMap.event.addListener(geolocation, 'complete', onComplete);
+            AMap.event.addListener(geolocation, 'error', onError);
+
+            function onComplete(data) {
+                // data是具体的定位信息
+                console.log(data);
+            }
+
+            function onError(data) {
+                // 定位出错
+            }
+        });
+        $('#place').val('上海火车站');
+        lacationOk();
+    });
+
+    function lacationOk() {
+        if (marker) {
+            marker.setMap(null);
+            marker = null;
+        }
+        place = document.getElementById("place").value;
+        // alert(place);
+        map.plugin(["AMap.Geocoder"], function () {     //加载地理编码插件
+            MGeocoder = new AMap.Geocoder({
+                city: place, //城市，默认：“全国”
+                // city: "上海大学", //城市，默认：“全国”
+                radius: 1000 //范围，默认：500
+            });
+            //地理编码
+            MGeocoder.getLocation(place, function (status, result) {
+                if (status === 'complete' && result.info === 'OK') {
+                    //TODO:获得了有效经纬度，可以做一些展示工作
+                    //比如在获得的经纬度上打上一个Marker
+                    var lng = result.geocodes[0].location.lng;   //获取经度
+                    var lat = result.geocodes[0].location.lat;   //获取纬度
+                    map.setZoomAndCenter(13, [lng, lat]);
+                    marker = new AMap.Marker({
+                        position: [lng, lat],
+                        title: result.geocodes[0].formattedAddress,
+                        map: map,
+                        draggable: true,
+                        raiseOnDrag: false,
+                    });
+                    $('#lnglat').val(lng + ',' + lat);
+                    // alert(JSON.stringify(result));
+
+                    //绑定marker拖动搜索地点
+                    AMap.plugin(['AMap.ToolBar', 'AMap.Scale'], function () {
+                        var toolBar = new AMap.ToolBar();
+                        var scale = new AMap.Scale();
+                        map.addControl(toolBar);
+                        map.addControl(scale);
+                    });
+                    AMap.event.addListener(marker, "dragstart", function (e) {
+                        console.log('dragstart');
+                        var lng = marker.getPosition().lng;
+                        var lat = marker.getPosition().lat;
+                        $('#lnglat').val(lng + ',' + lat);
+                    });
+
+                    AMap.event.addListener(marker, "dragging", function (e) {
+                        console.log('dragging');
+                        $('#place').val('检索地址中......');
+                        var lng = marker.getPosition().lng;
+                        var lat = marker.getPosition().lat;
+                        $('#lnglat').val(lng + ',' + lat);
+                    });
+
+                    AMap.event.addListener(marker, "dragend", function (e) {
+                        console.log('dragend');
+                        var lng = marker.getPosition().lng;
+                        var lat = marker.getPosition().lat;
+                        $('#lnglat').val(lng + ',' + lat);
+                        lnglatXY = [marker.getPosition().lng, marker.getPosition().lat];
+                        var geocoder = new AMap.Geocoder({
+                            radius: 1000,
+                            extensions: "all"
+                        });
+                        geocoder.getAddress(lnglatXY, function (status, result) {
+                            if (status === 'complete' && result.info === 'OK') {
+                                var address = result.regeocode.formattedAddress; //返回地址描述
+                                $('#place').val(address);
+                            }
+                        });
+                    });
+
+                    //为地图注册click事件,鼠标点击获取经纬度及地址
+                    map.on('click', function (e) {
+                        marker.setPosition([e.lnglat.getLng(), e.lnglat.getLat()]);
+                        console.log(e);
+                        var geocoder = new AMap.Geocoder({
+                            radius: 1000,
+                            extensions: "all"
+                        });
+                        geocoder.getAddress([e.lnglat.getLng(), e.lnglat.getLat()], function (status, result) {
+                            if (status === 'complete' && result.info === 'OK') {
+                                var address = result.regeocode.formattedAddress; //返回地址描述
+                                // document.getElementById("address").value = address;
+                                $('#place').val(address);
+                            }
+                        });
+                        document.getElementById("lnglat").value = e.lnglat.getLng() + ',' + e.lnglat.getLat()
+                    });
+
+                    //输入提示
+                    AMap.plugin(["AMap.Autocomplete"], function () {
+                        auto = new AMap.Autocomplete({
+                            input: "place"
+                        });
+                    });
+
+                    //注册监听，当选中某条记录时会触发
+                    AMap.event.addListener(auto, "select", select);
+
+                    function select(e) {
+                        if (e.poi && e.poi.location) {
+                            console.log(e);
+                            map.setZoomAndCenter(13, [e.poi.location.lng, e.poi.location.lat]);
+                            marker.setPosition([e.poi.location.lng, e.poi.location.lat]);
+                        }
+                    }
+                } else {
+                    //获取经纬度失败
+                    alert(JSON.stringify('获取经纬度失败'));
+                }
+            });
+        });
+    };
+</script>
