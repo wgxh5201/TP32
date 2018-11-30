@@ -57,7 +57,10 @@
     var place;
     var auto;
     var map = new AMap.Map("container", {
-        resizeEnable: true
+        resizeEnable: true,
+        //开启3D模式参数
+        // pitch:75, // 地图俯仰角度，有效范围 0 度- 83 度
+        // viewMode:'3D' // 地图模式
     });
 
     $(function () {

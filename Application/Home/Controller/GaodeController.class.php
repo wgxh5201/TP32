@@ -14,4 +14,9 @@ class GaodeController extends BaseController
         $this->assign('method', __METHOD__);
         $this->display();
     }
+
+    public function markList()
+    {
+        $this->display();
+    }
 }
