@@ -1,0 +1,106 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <!--下载到本地-->
+    <script src="__PUBLIC__/jquery-3.3.1.min.js"></script>
+    <script src="__PUBLIC__/bootstrap-4.0.0-dist/css/bootstrap.min.css"></script>
+    <script src="__PUBLIC__/bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
+    <!--在线导入-->
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
+    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>-->
+    <title>筛选sql条件</title>
+</head>
+<!-- 拼接sql -->
+<div class="col-sm-12" style="border: 1px #dadada solid;margin-top: 50px">
+    <form method="post" action="/home/SplicingSql/Splicing" class="form-horizontal" id="myform">
+        <div class="col-sm-12">
+            <div id="editable_filter" class="dataTables_filter">
+                <input type="hidden" name="countField" id="countField" value="1">
+                <div class="search_content">
+                    <div class="form-group">
+                        <div class="col-sm-2">
+                            <select class="form-control m-b select" name="where[0][field]" id="where[0][field]">
+                                <option value="0" style="text-align: center">请选择筛选字段</option>
+                                <?php foreach (json_decode($aFieldSelect, true) as $k=>$v): ?>
+                                <option value="<?php echo $k?>" condition-where="<?php $v['where'];?>">
+                                    <?php echo $v['fieldName'] ?>
+                                </option>
+                                <?php endforeach;?>
+                            </select>
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control input" name="where[0][value]" id="where[0][value]">
+                        </div>
+                        <div class="col-sm-1" style="font-size: 25px;text-align: center">
+                            <a class="del" href="javascript:;" title="删除">
+                                <i class="glyphicon glyphicon-minus"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-1" style="font-size: 25px;text-align: center">
+                        <a class="add" href="javascript:;" title="增加">
+                            <i class="glyphicon glyphicon-plus"></i>
+                        </a>
+                    </div>
+                    <div class="col-sm-1">
+                        <button type="submit" class="btn btn-sm btn-primary" id="formbtn">搜索</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+</html>
+<script>
+    $('.select').change(function () {
+    });
+
+    //删除
+    $('.del').on('click', function () {
+        $(this).parents('.form-group').remove();
+    })
+
+    $(document).on('click', '.del', function () {
+        $(this).parents('.form-group').remove();
+    });
+
+    //添加
+    $('.add').on('click', function () {
+        var countField = parseInt($('#countField').val()) + 1;
+        $('#countField').val(countField);
+        console.log(countField);
+
+        var aFieldSelect = {$aFieldSelect};
+        console.log(aFieldSelect);
+        var group = "";
+        group += '<div class="form-group">';
+        group += '<div class="col-sm-2">';
+        group += '<select class="form-control m-b select" name="where['+countField+'][field]" id="where['+countField+'][field]">';
+        group += '<option value="" style="text-align: center">请选择筛选字段</option>';
+        $.each(aFieldSelect, function (index, value) {
+            group += '<option value="'+index+'">';
+            group += value.fieldName;
+            group += '</option>';
+        });
+        group += '</select>';
+        group += '</div>';
+        group += '<div class="col-sm-2">';
+        group += '<input type="text" class="form-control input" name="where['+countField+'][value]" id="where['+countField+'][value]">';
+        group += '</div>';
+        group += '<div class="col-sm-1" style="font-size: 25px;text-align: center">';
+        group += '<a class="del" href="javascript:;" title="删除">';
+        group += '<i class="glyphicon glyphicon-minus"></i>';
+        group += '</a>';
+        group += '</div>';
+        group += '</div>';
+        $('.search_content').append(group);
+    })
+</script>
