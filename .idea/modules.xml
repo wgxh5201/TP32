@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../php-amqplib/.idea/php-amqplib.iml" filepath="$PROJECT_DIR$/../php-amqplib/.idea/php-amqplib.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/tp32.iml" filepath="$PROJECT_DIR$/.idea/tp32.iml" />
     </modules>
   </component>
