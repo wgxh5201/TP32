@@ -9,7 +9,7 @@ class AmqpPublishController extends BaseController
     CONST PORT = 5672;
     CONST USER = 'guest';
     CONST PASS = 'guest';
-    CONST VHOST = '/';
+    CONST VHOST = 'htdocs';
     private $exchange = '/home/gaode/view';
     private $queue = 'request1';
 
