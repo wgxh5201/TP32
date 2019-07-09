@@ -6,5 +6,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="php-amqplib" />
     <orderEntry type="module" module-name="huabo" />
+    <orderEntry type="module" module-name="yii2-user" />
   </component>
 </module>

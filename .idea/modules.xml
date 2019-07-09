@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/../huabo/.idea/huabo.iml" filepath="$PROJECT_DIR$/../huabo/.idea/huabo.iml" />
       <module fileurl="file://$PROJECT_DIR$/../php-amqplib/.idea/php-amqplib.iml" filepath="$PROJECT_DIR$/../php-amqplib/.idea/php-amqplib.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/tp32.iml" filepath="$PROJECT_DIR$/.idea/tp32.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../yii2-user/.idea/yii2-user.iml" filepath="$PROJECT_DIR$/../yii2-user/.idea/yii2-user.iml" />
     </modules>
   </component>
 </project>

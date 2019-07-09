@@ -1,6 +1,9 @@
 <?php
 
 namespace Home\Controller;
+use PhpAmqpLib\Connection\AMQPStreamConnection;
+use PhpAmqpLib\Message\AMQPMessage;
+use PhpAmqpLib\Exchange\AMQPExchangeType;
 
 class AmqpPublishController extends BaseController
 {
@@ -15,7 +18,7 @@ class AmqpPublishController extends BaseController
 
     public function __construct()
     {
-        $this->conn = new \PhpAmqpLib\Connection\AMQPStreamConnection(self::HOST, self::PORT, self::USER, self::PASS, self::VHOST);
+        $this->conn = new AMQPStreamConnection(self::HOST, self::PORT, self::USER, self::PASS, self::VHOST);
         parent::__construct();
     }
 
@@ -25,12 +28,12 @@ class AmqpPublishController extends BaseController
         $argv = I('argv');
         $channel = $this->conn->channel();
         $channel->queue_declare($this->queue, false, true, false, false);
-        $channel->exchange_declare($this->exchange, \PhpAmqpLib\Exchange\AMQPExchangeType::DIRECT, false, true, false);
+        $channel->exchange_declare($this->exchange, AMQPExchangeType::DIRECT, false, true, false);
 
         $channel->queue_bind($this->queue, $this->exchange);
 
 //        $messageBody = implode(' ', array_slice($argv, 1));
-        $message = new \PhpAmqpLib\Message\AMQPMessage($argv, array('content_type' => 'text/plain', 'delivery_mode' => \PhpAmqpLib\Message\AMQPMessage::DELIVERY_MODE_PERSISTENT));
+        $message = new AMQPMessage($argv, array('content_type' => 'text/plain', 'delivery_mode' => AMQPMessage::DELIVERY_MODE_PERSISTENT));
         $channel->basic_publish($message, $this->exchange);
 
         $channel->close();
