@@ -3342,11 +3342,6 @@
       <change beforePath="$PROJECT_DIR$/../huabo/themes/pc/huabo/store-index-default.html" beforeDir="false" afterPath="$PROJECT_DIR$/../huabo/themes/pc/huabo/store-index-default.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../huabo/themes/pc/huabo/store-list-default.html" beforeDir="false" afterPath="$PROJECT_DIR$/../huabo/themes/pc/huabo/store-list-default.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../huabo/themes/pc/huabo/training-default.html" beforeDir="false" afterPath="$PROJECT_DIR$/../huabo/themes/pc/huabo/training-default.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/tp32.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/tp32.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Home/Controller/AmqpPublishController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Home/Controller/AmqpPublishController.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -3386,11 +3381,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/index.php">
+      <file leaf-file-name="test.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Application/test.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="25" column="15" selection-start-line="25" selection-start-column="15" selection-end-line="25" selection-end-column="15" />
+            <state relative-caret-position="17">
+              <caret line="1" column="12" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -3479,6 +3474,7 @@
         <option value="$PROJECT_DIR$/../yii2-user/Finder.php" />
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/phpinfo.php" />
+        <option value="$PROJECT_DIR$/Application/test.php" />
       </list>
     </option>
   </component>
@@ -3507,6 +3503,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -3576,7 +3573,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -3588,14 +3584,15 @@
     <property name="settings.editor.splitter.proportion" value="0.22621359" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/ThinkPHP/Library/Org/Util" />
-      <recent name="$PROJECT_DIR$/Application/Home/Controller" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/ThinkPHP/Library" />
       <recent name="$PROJECT_DIR$/ThinkPHP/Library/Vendor" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Application" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/ThinkPHP/Library/Org/Util" />
+      <recent name="$PROJECT_DIR$/Application/Home/Controller" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -3626,11 +3623,12 @@
       <workItem from="1556499784894" duration="431000" />
       <workItem from="1556585123379" duration="1017000" />
       <workItem from="1559618510244" duration="1095000" />
+      <workItem from="1562647695555" duration="79000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42394000" />
+    <option name="totallyTimeSpent" value="42473000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -3645,7 +3643,7 @@
     <frame x="-1440" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29542202" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29971388" />
       <window_info anchor="bottom" id="TODO" order="10" weight="0.32969698" />
       <window_info anchor="bottom" id="Docker" order="3" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="0" side_tool="true" />
@@ -3678,13 +3676,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ThinkPHP/Library/PhpAmqpLib/Connection/AMQPStreamConnection.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1853">
-          <caret line="109" column="5" selection-start-line="109" selection-start-column="5" selection-end-line="109" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ThinkPHP/Library/PhpAmqpLib/Message/AMQPMessage.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="952">
@@ -3976,6 +3967,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/phpinfo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="2" selection-start-line="3" selection-start-column="2" selection-end-line="3" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Application/Home/Controller/AmqpPublishController.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="259">
@@ -3986,17 +3984,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/phpinfo.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="2" selection-start-line="3" selection-start-column="2" selection-end-line="3" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
-          <caret line="25" column="15" selection-start-line="25" selection-start-column="15" selection-end-line="25" selection-end-column="15" />
+          <caret line="25" column="25" lean-forward="true" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="12" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
         </state>
       </provider>
     </entry>
