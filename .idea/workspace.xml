@@ -3342,6 +3342,7 @@
       <change beforePath="$PROJECT_DIR$/../huabo/themes/pc/huabo/store-index-default.html" beforeDir="false" afterPath="$PROJECT_DIR$/../huabo/themes/pc/huabo/store-index-default.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../huabo/themes/pc/huabo/store-list-default.html" beforeDir="false" afterPath="$PROJECT_DIR$/../huabo/themes/pc/huabo/store-list-default.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../huabo/themes/pc/huabo/training-default.html" beforeDir="false" afterPath="$PROJECT_DIR$/../huabo/themes/pc/huabo/training-default.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/test.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/test.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -3384,8 +3385,8 @@
       <file leaf-file-name="test.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Application/test.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="12" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
+            <state relative-caret-position="34">
+              <caret line="2" column="12" lean-forward="true" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -3623,12 +3624,12 @@
       <workItem from="1556499784894" duration="431000" />
       <workItem from="1556585123379" duration="1017000" />
       <workItem from="1559618510244" duration="1095000" />
-      <workItem from="1562647695555" duration="79000" />
+      <workItem from="1562647695555" duration="99000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42473000" />
+    <option name="totallyTimeSpent" value="42493000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -3643,7 +3644,7 @@
     <frame x="-1440" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29971388" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.29971388" />
       <window_info anchor="bottom" id="TODO" order="10" weight="0.32969698" />
       <window_info anchor="bottom" id="Docker" order="3" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="0" side_tool="true" />
@@ -3652,7 +3653,7 @@
       <window_info anchor="bottom" id="Run" order="6" />
       <window_info anchor="bottom" id="Version Control" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.17939393" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.17939393" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -3993,8 +3994,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/test.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="12" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
+        <state relative-caret-position="34">
+          <caret line="2" column="12" lean-forward="true" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
         </state>
       </provider>
     </entry>
